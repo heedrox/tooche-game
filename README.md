@@ -4,13 +4,8 @@ A game whose project you can follow.
 # Based on  Phaser + ES6 + Webpack.
 #### A bootstrap project to create games with Phaser + ES6 + Webpack.
 
-![Phaser+ES6+Webpack](https://raw.githubusercontent.com/lean/phaser-es6-webpack/master/assets/images/phaser-es6-webpack.jpg)
-
-[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
-
-
 ## Features
-- ESLINT with JavaScript Standard Style configuration
+- ESLINT with JavaScript Airbnb Style configuration
 - Next generation of Javascript
 - Browsers are automatically updated as you change project files
 - Webpack ready

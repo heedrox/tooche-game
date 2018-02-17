@@ -26,7 +26,7 @@ module.exports = {
     pathinfo: true,
     path: path.resolve(__dirname, 'dist'),
     publicPath: './dist/',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   watch: true,
   plugins: [
@@ -59,6 +59,7 @@ module.exports = {
   ],
   module: {
     rules: [
+      { test: /\.(js)$/, loader: 'eslint-loader', include: path.join(__dirname, 'src'), options: { formatter: require('eslint-friendly-formatter') } },
       { test: /\.js$/, use: ['babel-loader'], include: path.join(__dirname, 'src') },
       { test: /pixi\.js/, use: ['expose-loader?PIXI'] },
       { test: /phaser-split\.js$/, use: ['expose-loader?Phaser'] },

@@ -1,6 +1,6 @@
 {
   "parser": "babel-eslint",
-  "extends": "standard",
+  "extends": "airbnb",
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module"
