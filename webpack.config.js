@@ -59,7 +59,7 @@ module.exports = {
   ],
   module: {
     rules: [
-      { test: /\.(js)$/, loader: 'eslint-loader', include: path.join(__dirname, 'src'), options: { formatter: require('eslint-friendly-formatter') } },
+      { test: /\.js$/, loader: 'eslint-loader', enforce: 'pre', exclude: path.join(__dirname,'build'), include: path.join(__dirname, 'src'), options: { formatter: require('eslint-friendly-formatter') } },
       { test: /\.js$/, use: ['babel-loader'], include: path.join(__dirname, 'src') },
       { test: /pixi\.js/, use: ['expose-loader?PIXI'] },
       { test: /phaser-split\.js$/, use: ['expose-loader?Phaser'] },

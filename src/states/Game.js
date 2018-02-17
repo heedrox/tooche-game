@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /* globals __DEV__ */
 import Phaser from 'phaser';
 import Mushroom from '../sprites/Mushroom';
@@ -14,7 +15,7 @@ export default class extends Phaser.State {
     const banner = this.add.text(this.world.centerX, this.game.height - 80, bannerText, {
       font: '40px Bangers',
       fill: '#77BFA3',
-      smoothed: false
+      smoothed: false,
     });
 
     banner.padding.set(10, 16);
@@ -24,7 +25,7 @@ export default class extends Phaser.State {
       game: this.game,
       x: this.world.centerX,
       y: this.world.centerY,
-      asset: 'mushroom'
+      asset: 'mushroom',
     });
 
     this.game.add.existing(this.mushroom);
