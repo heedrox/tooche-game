@@ -1,4 +1,7 @@
-# Phaser + ES6 + Webpack.
+# Tooche Game
+A game whose project you can follow. 
+
+# Based on  Phaser + ES6 + Webpack.
 #### A bootstrap project to create games with Phaser + ES6 + Webpack.
 
 ![Phaser+ES6+Webpack](https://raw.githubusercontent.com/lean/phaser-es6-webpack/master/assets/images/phaser-es6-webpack.jpg)
