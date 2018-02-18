@@ -1,8 +1,19 @@
 /* eslint-disable class-methods-use-this */
 import Phaser from 'phaser';
 import { centerGameObjects } from '../utils';
+import LEVELS from '../levels';
+
+const getImage = (isGuiado, level) => {
+  if (isGuiado) return `assets/levels/${level.world}/guiado/${level.world}-${level.level}.jpg`;
+  return `assets/levels/${level.world}/guia/${level.world}.jpg`;
+};
 
 export default class extends Phaser.State {
+  constructor(isGuiado) {
+    super();
+    this.isGuiado = isGuiado;
+  }
+
   init() {
   }
 
@@ -15,9 +26,10 @@ export default class extends Phaser.State {
     //
     // load your assets
     //
-    [1, 2, 3, 4, 5].forEach((n) => {
-      this.load.image(`image-1-${n}`, `assets/levels/1/1-${n}.jpg`);
+    LEVELS.forEach((level) => {
+      this.load.image(`image-${level.world}-${level.level}`, getImage(this.isGuiado, level));
     });
+    this.load.spritesheet('target', 'assets/anim-sprites/target.png', 256, 256, 8);
   }
 
   create() {
