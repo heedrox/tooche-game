@@ -5,6 +5,6 @@ export default class extends Phaser.Sprite {
     game, asset,
   }) {
     super(game, game.world.centerX, game.world.centerY, asset);
-    // this.anchor.setTo(0.5);
+    this.anchor.setTo(0.5);
   }
 }

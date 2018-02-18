@@ -24,7 +24,6 @@ export default class extends Phaser.State {
 
   update() {
     // console.log('positions', this.getWorldPointFromPixelPoint(this.mousePosWorld));
-    this.game.camera.setPosition(this.mousePosWorld.x, this.mousePosWorld.y);
     // this.game.camera.scale = this.game.camera.scale + 0.1;
     // console.log('update', fps);
     // this.game.world.Step(1 / fps, 8, 3);
