@@ -1,39 +1,37 @@
-/* eslint-disable class-methods-use-this */
+/* eslint-disable class-methods-use-this,no-lonely-if,prefer-destructuring,no-plusplus */
 /* globals __DEV__ */
 import Phaser from 'phaser';
-import Mushroom from '../sprites/Mushroom';
+import BackgroundImage from '../sprites/BackgroundImage';
 
 export default class extends Phaser.State {
   init() {
   }
 
-  preload() {
-  }
-
   create() {
-    const bannerText = 'Phaser + ES6 + Webpack';
-    const banner = this.add.text(this.world.centerX, this.game.height - 80, bannerText, {
-      font: '40px Bangers',
-      fill: '#77BFA3',
-      smoothed: false,
-    });
-
-    banner.padding.set(10, 16);
-    banner.anchor.setTo(0.5);
-
-    this.mushroom = new Mushroom({
+    this.backgroundImage = new BackgroundImage({
       game: this.game,
-      x: this.world.centerX,
-      y: this.world.centerY,
-      asset: 'mushroom',
+      asset: 'image-1-1',
     });
 
-    this.game.add.existing(this.mushroom);
+    this.game.add.existing(this.backgroundImage);
   }
 
   render() {
     if (__DEV__) {
-      this.game.debug.spriteInfo(this.mushroom, 32, 32);
+      this.game.debug.spriteInfo(this.backgroundImage);
     }
+  }
+
+  update() {
+    // console.log('positions', this.getWorldPointFromPixelPoint(this.mousePosWorld));
+    this.game.camera.setPosition(this.mousePosWorld.x, this.mousePosWorld.y);
+    // this.game.camera.scale = this.game.camera.scale + 0.1;
+    // console.log('update', fps);
+    // this.game.world.Step(1 / fps, 8, 3);
+    // this.game.world.ClearForces();
+
+    // if ( imagesLoaded ) {
+    //   positionImages();
+    // }
   }
 }
