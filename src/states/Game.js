@@ -116,16 +116,6 @@ export default class extends Phaser.State {
     this.targetImage.smoothed = true;
     this.targetImage.scale.setTo(size / 256, size / 256);
     this.targetImage.anchor.setTo(0.5, 0.5);
-    const animateTargetImage = () => {
-      const zoomInStart = this.game.add.tween(this.targetImage.scale)
-        .to({ x: 0.25, y: 0.25 }, 500, Phaser.Easing.Linear.None, false, 5000);
-      const zoomOutEnd = this.game.add.tween(this.targetImage.scale)
-        .to({ x: size / 256, y: size / 256 }, 500, Phaser.Easing.Linear.None);
-      zoomInStart.chain(zoomOutEnd);
-      zoomOutEnd.onComplete.add(animateTargetImage);
-      zoomInStart.start();
-    };
-    animateTargetImage();
   }
 
   resizeGame() {
