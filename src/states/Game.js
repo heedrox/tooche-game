@@ -51,34 +51,35 @@ export default class extends Phaser.State {
     this.addBackgroundImage(this.currentLevel);
     if (!this.isGuiado) {
       this.addTarget(this.currentLevel);
+      this.addArrowControls();
+      this.addTimerText();
+      if (this.numLevel === 0) {
+        this.leftArrowControl.visible = false;
+      } else {
+        this.leftArrowControl.visible = true;
+      }
     }
     this.addLevelText();
-    this.addArrowControls();
-    this.addTimerText();
     this.positionElements();
-    if (this.numLevel === 0) {
-      this.leftArrowControl.visible = false;
-    } else {
-      this.leftArrowControl.visible = true;
-    }
   }
 
   addLevelText() {
     if (!this.levelText) {
       this.levelText = this.add.text(50, this.game.height - 100, this.numLevel + 1, { font: '32px Bangers', fill: '#000', align: 'left' });
+      this.levelText.padding.set(10, 16);
+
     }
     this.updateText();
   }
 
   addTimerText() {
-    if (this.isGuiado) {
-      if (!this.timerText) {
-        this.timerText = this.add.text(this.game.width - 100, this.game.height - 100, '', { font: '32px Bangers', fill: '#000', align: 'left' });
-      }
+    if (!this.timerText) {
+      this.timerText = this.add.text(this.game.width - 100, this.game.height - 100, '', { font: '32px Bangers', fill: '#000', align: 'left' });
+      this.timerText.padding.set(10, 16);
     }
-  }
+}
   updateText() {
-    this.levelText.text = this.numLevel + 1;
+    this.levelText.text = `${this.numLevel + 1} / ${LEVELS.length}`;
   }
 
   addArrowControls() {
@@ -210,7 +211,7 @@ export default class extends Phaser.State {
   }
 
   startTimer() {
-    if (this.isGuiado) {
+    if (!this.isGuiado) {
       this.timer = this.game.time.create(false);
       this.timer.loop(300000, this.endTimer.bind(this), this);
       this.timer.start();
@@ -225,8 +226,8 @@ export default class extends Phaser.State {
   }
 
   paintTimer() {
-    if (this.timerText && this.isGuiado) {
-      this.timerText.text = this.timer.duration.toFixed(0);
+    if (this.timerText) {
+      this.timerText.text = Math.floor(this.timer.duration / 1000).toFixed(0);
     }
   }
 }
