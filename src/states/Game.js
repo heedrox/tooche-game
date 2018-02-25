@@ -4,12 +4,8 @@ import Phaser from 'phaser';
 import BackgroundImage from '../sprites/BackgroundImage';
 import LEVELS from '../levels';
 
-const isLandscape = image => image.texture.width > image.texture.height;
 const getRatio = (image, game) => {
-  if ((isLandscape(image) && game.scale.isGameLandscape) ||
-    (!isLandscape(image) && game.scale.isGamePortrait)) {
-    return game.height / image.texture.height;
-  }
+  if (game.scale.isGameLandscape) return game.height / image.texture.height;
   return game.width / image.texture.width;
 };
 const getTargetBoundaries = level => ({
@@ -129,6 +125,7 @@ export default class extends Phaser.State {
 
   positionElements() {
     const ratio = getRatio(this.backgroundImage, this.game);
+    console.log('ratio is', ratio);
     this.backgroundImage.scale.setTo(ratio, ratio);
     this.backgroundImage.x = this.game.world.centerX;
     this.backgroundImage.y = this.game.world.centerY;

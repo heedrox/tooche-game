@@ -4,8 +4,8 @@ import { centerGameObjects } from '../utils';
 import LEVELS from '../levels';
 
 const getImage = (isGuiado, level) => {
-  if (isGuiado) return `assets/levels/${level.world}/guiado/${level.world}-${level.level}.jpg`;
-  return `assets/levels/${level.world}/guia/${level.world}.jpg`;
+  if (isGuiado) return `assets/levels/${level.world}/guiado/${level.level}.jpg`;
+  return `assets/levels/${level.world}/guia/base.jpg`;
 };
 
 export default class extends Phaser.State {
