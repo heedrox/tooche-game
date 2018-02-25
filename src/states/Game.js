@@ -65,7 +65,7 @@ export default class extends Phaser.State {
 
   addLevelText() {
     if (!this.levelText) {
-      this.levelText = this.add.text(50, this.game.height - 100, this.numLevel + 1, { font: '32px Bangers', fill: '#000', align: 'left' });
+      this.levelText = this.add.text(0, this.game.height - 25, this.numLevel + 1, { font: '32px Bangers', fill: '#000', align: 'left' });
       this.levelText.padding.set(10, 16);
 
     }
@@ -74,7 +74,7 @@ export default class extends Phaser.State {
 
   addTimerText() {
     if (!this.timerText) {
-      this.timerText = this.add.text(this.game.width - 100, this.game.height - 100, '', { font: '32px Bangers', fill: '#000', align: 'left' });
+      this.timerText = this.add.text(this.game.width - 55, this.game.height - 50, '', { font: '32px Bangers', fill: '#000', align: 'left' });
       this.timerText.padding.set(10, 16);
     }
 }
@@ -84,12 +84,12 @@ export default class extends Phaser.State {
 
   addArrowControls() {
     if (!this.leftArrowControl) {
-      this.leftArrowControl = this.add.text(25, 25, '⬅️', { font: '32px Bangers', fill: '#000', align: 'left' });
+      this.leftArrowControl = this.add.text(10, 10, '⬅️', { font: '32px Bangers', fill: '#000', align: 'left' });
       this.leftArrowControl.inputEnabled = true;
       this.leftArrowControl.events.onInputDown.add(this.previousLevel.bind(this), this);
     }
     if (!this.rightArrowControl) {
-      this.rightArrowControl = this.add.text(this.game.width - 25, 75, '➡️', { font: '32px Bangers', fill: '#000', align: 'left' });
+      this.rightArrowControl = this.add.text(this.game.width - 25, 10, '➡️', { font: '32px Bangers', fill: '#000', align: 'left' });
       this.rightArrowControl.inputEnabled = true;
       this.rightArrowControl.events.onInputDown.add(this.nextLevel.bind(this), this);
     }
@@ -135,16 +135,16 @@ export default class extends Phaser.State {
       this.targetImage.centerY = this.backgroundImage.top + (this.currentLevel.centerY * ratio);
     }
     if (this.levelText) {
-      this.levelText.x = 25;
-      this.levelText.y = this.game.height - 100;
+      this.levelText.x = 10;
+      this.levelText.y = this.game.height - 35;
     }
     if (this.leftArrowControl) {
-      this.leftArrowControl.x = 25;
-      this.leftArrowControl.y = 25;
+      this.leftArrowControl.x = 10;
+      this.leftArrowControl.y = 10;
     }
     if (this.rightArrowControl) {
-      this.rightArrowControl.x = this.game.width - 50;
-      this.rightArrowControl.y = 25;
+      this.rightArrowControl.x = this.game.width - 35;
+      this.rightArrowControl.y = 10;
     }
 
     if (this.isGuiado) {
@@ -221,7 +221,7 @@ export default class extends Phaser.State {
   endTimer() {
     if (this.isGuiado) {
       this.timer = null;
-      alert('TIME IS OVER!! ooooh :(');
+      alert('TIME IS OVER!! ooooh :( try again, come on!');
     }
   }
 
