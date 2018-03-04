@@ -30,6 +30,8 @@ export default class extends Phaser.State {
       this.load.image(`image-${level.world}-${level.level}`, getImage(this.isGuiado, level));
     });
     this.load.spritesheet('target', 'assets/anim-sprites/target.png', 256, 256, 8);
+    this.load.audio('ko', 'assets/audio/ko.ogg');
+    this.load.audio('ok', 'assets/audio/ok.ogg');
   }
 
   create() {
