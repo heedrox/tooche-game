@@ -1,5 +1,5 @@
 # Tooche Game
-A game whose project you can follow. 
+A game which you can follow the evolution of the development.
 
 # Based on  Phaser + ES6 + Webpack.
 #### A bootstrap project to create games with Phaser + ES6 + Webpack.
