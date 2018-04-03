@@ -6,14 +6,27 @@
     "sourceType": "module"
   },
   "env": {
-    "browser": true
+    "browser": true,
+    "mocha": true
   },
+  "plugins": [
+    "chai-friendly"
+  ],
   "rules": {
     "import/no-unresolved": [2],
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "func-names": ["error", "never"],
+    "no-unused-expressions": 0,
+    "no-param-reassign": 0,
+    "chai-friendly/no-unused-expressions": 2,
+    "strict": 0,
+    "dot-notation": 0
   },
   "globals": {
-    "phaser": true
+    "phaser": true,
+    "expect": true,
+    "sinon": true,
+    "window": true
   },
   "settings": {
     "import/core-modules": ["phaser", "pixi", "p2"]
