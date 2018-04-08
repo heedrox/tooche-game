@@ -2,10 +2,13 @@ import Main from '../../../src/main/Main';
 
 describe('main', () => {
   describe('when no cordova', () => {
-    it('should initialize by itself', () => {
+    it('should initialize calling Boot', () => {
       const main = new Main();
+      main.mainGame.state.start = sinon.spy();
 
-      expect(main).not.to.be.undefined;
+      main.init();
+
+      expect(main.mainGame.state.start).to.have.been.called;
     });
   });
 });

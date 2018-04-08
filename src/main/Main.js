@@ -1,30 +1,41 @@
-import 'pixi';
-import 'p2';
-import Phaser from 'phaser';
-import SplashState from '../states/Splash';
-import BootState from '../states/Boot';
-import GameState from '../states/Game';
+import MainGame from './MainGame';
 
-class Main extends Phaser.Game {
+class Main {
   constructor() {
-    const docElement = document.documentElement;
-    const width = docElement.clientWidth;
-    const height = docElement.clientHeight;
-    const isGuiado = window.location.href.indexOf('guiado') > 0;
+    this.mainGame = new MainGame();
+  }
 
-
-    super(width, height, Phaser.AUTO, 'content', null);
-
-    this.state.add('Boot', new BootState(), false);
-    this.state.add('Splash', new SplashState(isGuiado), false);
-    this.state.add('Game', new GameState(isGuiado), false);
-
-    // with Cordova with need to wait that the device
-    // is ready so we will call the Boot state in another file
+  init() {
     if (!window.cordova) {
-      this.state.start('Boot');
+      this.mainGame.init();
+    } else {
+      const app = {
+        initialize: () => {
+          document.addEventListener(
+            'deviceready',
+            this.onDeviceReady.bind(this),
+            false,
+          );
+        },
+
+        // deviceready Event Handler
+        //
+        onDeviceReady: () => {
+          this.receivedEvent('deviceready');
+
+          // When the device is ready, start Phaser Boot state.
+          this.mainGame.init();
+        },
+
+        receivedEvent: (id) => {
+          console.log(`Received Event: ${id}`);
+        },
+      };
+
+      app.initialize();
     }
   }
 }
 
 export default Main;
+
