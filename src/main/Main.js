@@ -1,4 +1,5 @@
 import MainGame from './MainGame';
+import MainCordovaLauncher from './MainCordovaLauncher';
 
 class Main {
   constructor() {
@@ -9,29 +10,7 @@ class Main {
     if (!window.cordova) {
       this.mainGame.init();
     } else {
-      const app = {
-        initialize: () => {
-          document.addEventListener(
-            'deviceready',
-            this.onDeviceReady.bind(this),
-            false,
-          );
-        },
-
-        // deviceready Event Handler
-        //
-        onDeviceReady: () => {
-          this.receivedEvent('deviceready');
-
-          // When the device is ready, start Phaser Boot state.
-          this.mainGame.init();
-        },
-
-        receivedEvent: (id) => {
-          console.log(`Received Event: ${id}`);
-        },
-      };
-
+      const app = new MainCordovaLauncher(this.mainGame);
       app.initialize();
     }
   }
